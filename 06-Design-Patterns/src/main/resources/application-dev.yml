@@ -1,0 +1,3 @@
+spring:
+  name: dev
+debug: true #查看生效的自动配置

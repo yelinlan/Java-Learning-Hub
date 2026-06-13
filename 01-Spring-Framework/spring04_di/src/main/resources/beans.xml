@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--
+    set注入：
+            String name;
+            String wife;
+            Address address;
+            String[] books;
+            List<String> hobbys;
+            Map<String, String> card;
+            Set<String> games;
+            Properties info;
+    -->
+    <bean class="com.yll.pojo.Student" id="student">
+        <property name="name" value="张三"/>
+        <property name="address" ref="address"/>
+        <property name="books">
+            <array>
+                <value>红楼梦</value>
+                <value>三国演义</value>
+                <value>西游记</value>
+                <value>水浒传</value>
+            </array>
+        </property>
+        <property name="hobbys">
+            <list>
+                <value>acg</value>
+                <value>pro</value>
+                <value>动漫</value>
+                <value>游戏</value>
+            </list>
+        </property>
+        <property name="card">
+            <map>
+                <entry key="身份证" value="xxxx"/>
+                <entry key="银行卡" value="xxxx"/>
+            </map>
+        </property>
+        <property name="games">
+            <set>
+                <value>崩坏3</value>
+                <value>Genshin Impact</value>
+            </set>
+        </property>
+        <property name="wife">
+            <null/>
+        </property>
+        <property name="info">
+            <props>
+                <prop key="id">xxx</prop>
+                <prop key="age">12</prop>
+            </props>
+        </property>
+    </bean>
+    <bean class="com.yll.pojo.Address" id="address">
+        <property name="address" value="三里屯发电站"/>
+    </bean>
+</beans>
