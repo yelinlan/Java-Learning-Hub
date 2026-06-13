@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--默认使用无参构造-->
+    <bean id="userNoArgs" class="com.yll.pojo.User">
+        <property name="name" value="张益达"/>
+    </bean>
+    <!--配置有参构造-->
+    <bean id="userByName" class="com.yll.pojo.User">
+        <constructor-arg name="name" value="王小美按名字"/>
+    </bean>
+    <bean id="userByIndex" class="com.yll.pojo.User">
+        <constructor-arg index="0" value="王小美按索引"/>
+    </bean>
+    <bean id="userByType" class="com.yll.pojo.User">
+        <constructor-arg type="java.lang.String" value="王小美按类型"/>
+    </bean>
+    <!--name取别名 逗号分割，空格分隔，分号分割都可以-->
+    <!---->
+    <bean id="userAlisas" name="user2,user3" class="com.yll.pojo.User">
+        <property name="name" value="王小美"/>
+    </bean>
+    <!--取别名-->
+    <!--<alias name="user" alias="user4"/>-->
+    <!--单例多例 scope="singleton"-->
+    <bean id="userScope" class="com.yll.pojo.User" scope="singleton">
+        <property name="name" value="王小美"/>
+    </bean>
+</beans>

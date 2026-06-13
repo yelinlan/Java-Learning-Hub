@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+    <!--开启注解-->
+    <context:annotation-config/>
+    <!--
+                  byName根据属性名和id匹配,
+                  byType根据属性的类型和class匹配
+        -->
+
+    <!--
+    注解注入  对应属性上加注解@Autowired
+    会先byType注入，如果有多个相同类型，就按byName注入
+    -->
+    <bean class="com.yll.pojo.People" id="people"/>
+    <bean class="com.yll.pojo.Cat" id="cat"/>
+    <bean class="com.yll.pojo.Dog" id="dog"/>
+
+    <!--xml方式-->
+    <!--<bean class="com.yll.pojo.People" id="people" autowire="byName">
+        <property name="name" value="李四"/>
+    </bean>
+    <bean class="com.yll.pojo.People" id="people2" autowire="byType">
+        <property name="name" value="李四"/>
+    </bean>
+    <bean class="com.yll.pojo.Cat" id="cat"/>
+    <bean class="com.yll.pojo.Dog" id="dog"/>-->
+</beans>

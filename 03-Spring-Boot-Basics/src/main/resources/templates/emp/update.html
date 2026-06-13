@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://getbootstrap.com/docs/4.0/examples/dashboard/ -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/dashboard.css}" rel="stylesheet">
+</head>
+
+<body>
+<!--侧边栏抽取-->
+<div class="container-fluid">
+    <div class="row">
+        <div th:replace="~{commons/commons::sidebar(active='list.html')}"></div>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <form th:action="@{/updateEmp}" method="post">
+                <div class="form-group">
+                    <label>LastName</label>
+                    <input th:text="${emp.getLastName()}" type="text" name="lastName" class="form-control" placeholder="海绵宝宝">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input th:value="${emp.getEmail()}" type="email" name="email" class="form-control"
+                           placeholder="392063541@qq.com">
+                </div>
+                <div class="form-group">
+                    <label>Gender</label><br>
+                    <div class="form-check form-check-inline">
+                        <input th:checked="${emp.getGender()==1}" class="form-check-input" type="radio" name="gender"
+                               value="1">
+                        <label class="form-check-label">男</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input th:checked="${emp.getGender()==0}" class="form-check-input" type="radio" name="gender"
+                               value="0">
+                        <label class="form-check-label">女</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>department</label>
+                    <!--我们在controller层接收的是一个Employee，但是需要我们提交的其中的一个属性-->
+                    <select class="form-control" name="department.id">
+                        <option th:selected="${dept.getId()==emp.getDepartment().getId()}" th:each="dept:${departments}"
+                                th:text="${dept.getDepartmentName()}"
+                                th:value="${dept.getId()}"></option>
+                    </select>
+                </div>
+                <!--                <div class="form-group">-->
+                <!--                    <label>Birth</label>-->
+                <!--                    <input type="text" class="form-control" placeholder="嘤嘤嘤">-->
+                <!--                </div>-->
+                <button type="submit" class="btn btn-primary">修改</button>
+            </form>
+
+        </main>
+    </div>
+</div>
+</body>
+
+</html>

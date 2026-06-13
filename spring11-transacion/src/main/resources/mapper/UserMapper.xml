@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yll.mapper.UserMapper">
+    <insert id="insert">
+        insert into user(name, pwd)
+        VALUES (#{name}, #{pwd})
+    </insert>
+    <delete id="delete" >
+        delete from user where name = #{name}
+    </delete>
+    <select id="selectUser" resultType="com.yll.pojo.User">
+        select id,
+               name,
+               pwd
+        from user
+    </select>
+</mapper>
